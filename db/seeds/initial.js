@@ -29,16 +29,19 @@ exports.seed = async (knex) => {
       driver_name: 'driver1',
       vehicle_number: '389339',
       vehicle_colour: 'black',
+      cab_location: 'delhi',
     },
     {
       driver_name: 'driver2',
       vehicle_number: '389338',
       vehicle_colour: 'black',
+      cab_location: 'chennai',
     },
     {
       driver_name: 'driver3',
       vehicle_number: '389337',
       vehicle_colour: 'black',
+      cab_location: 'mumbai',
     },
   ];
 

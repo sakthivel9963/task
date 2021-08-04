@@ -17,7 +17,7 @@ exports.up = async (knex) => {
   await knex.schema.createTable(tableNames.USER, (table) => {
     table.increments();
     table.string('email', 254).unique();
-    table.string('name', 254).unique();
+    table.string('name', 254);
     table.string('password', 254);
     addDefaultColumn(table);
   });
@@ -26,6 +26,7 @@ exports.up = async (knex) => {
     table.string('driver_name', 254);
     table.string('vehicle_number', 254).unique();
     table.string('vehicle_colour', 254);
+    table.string('cab_location', 254);
     addDefaultColumn(table);
   });
   await knex.schema.createTable(tableNames.BOOKING, (table) => {
