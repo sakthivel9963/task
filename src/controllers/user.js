@@ -4,8 +4,13 @@ const { UserRepository } = require('../repositories');
 
 userRouter.get('/', async (req, res, next) => {
   try {
-    const whereObj = req.query;
-    const result = await UserRepository.find(tableName.USER, whereObj);
+    const whereObj = req.query.where ? JSON.parse(req.query.where) : {};
+    const paginateObj = req.query.paginate ? JSON.parse(req.query.paginate) : {};
+    const result = await UserRepository.find(
+      tableName.USER,
+      whereObj,
+      paginateObj,
+    );
     res.json(result);
   } catch (error) {
     next(error);

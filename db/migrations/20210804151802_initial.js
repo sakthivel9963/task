@@ -44,6 +44,6 @@ exports.up = async (knex) => {
 exports.down = async (knex) => {
   const tableName = Object.values(tableNames);
   await Promise.all(
-    tableName.map((tablename) => knex.schema.dropTableIfExists(tablename))
+    tableName.map((tablename) => knex.schema.dropTableIfExists(tablename)),
   );
 };

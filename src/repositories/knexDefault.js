@@ -1,8 +1,8 @@
 const connection = require('../db');
 
 class DefaultRepository {
-  static find(tableName, whereObj = {}) {
-    return connection.table(tableName).where(whereObj);
+  static find(tableName, whereObj = {}, paginateObj = {}) {
+    return connection.table(tableName).where(whereObj).paginate(paginateObj);
   }
 
   static findOne(tableName, whereObj) {
