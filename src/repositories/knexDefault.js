@@ -6,7 +6,7 @@ class DefaultRepository {
   }
 
   static findOne(tableName, whereObj) {
-    return connection.table(tableName).where(whereObj);
+    return connection.table(tableName).where(whereObj).limit(1);
   }
 
   static count(tableName) {

@@ -47,11 +47,20 @@ userRouter.get('/:id', async (req, res, next) => {
 userRouter.post('/', async (req, res, next) => {
   try {
     const saveObj = req.body;
-    const result = await UserRepository.save(
+    const result = await UserRepository.findOne(
+      tableName.USER,
+      {
+        email: req.body.email,
+      },
+    );
+    if (result.length) return res.status(400).send('Email already exists');
+    await UserRepository.save(
       controllerTable,
       saveObj,
     );
-    res.json(result);
+    res.json({
+      message: 'success',
+    });
   } catch (error) {
     next(error);
   }

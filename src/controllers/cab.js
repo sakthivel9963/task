@@ -47,11 +47,20 @@ cabRouter.get('/:id', async (req, res, next) => {
 cabRouter.post('/', async (req, res, next) => {
   try {
     const saveObj = req.body;
-    const result = await CabRepository.save(
+    const ifExists = await CabRepository.findOne(
+      tableName.CAB,
+      {
+        vehicle_number: req.body.vehicle_number,
+      },
+    );
+    if (ifExists.length) return res.status(400).send('Vehicle already register');
+    await CabRepository.save(
       controllerTable,
       saveObj,
     );
-    res.json(result);
+    res.json({
+      message: 'success',
+    });
   } catch (error) {
     next(error);
   }

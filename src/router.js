@@ -1,5 +1,8 @@
 const router = require('express').Router();
-const { bookingRouter, userRouter, cabRouter } = require('./controllers');
+const auth = require('./middleware/auth');
+const {
+  bookingRouter, userRouter, cabRouter, authRouter,
+} = require('./controllers');
 
 router.get('/ping', (req, res) => {
   res.json({
@@ -7,8 +10,9 @@ router.get('/ping', (req, res) => {
     message: 'Success',
   });
 });
-router.use('/user', userRouter);
-router.use('/booking', bookingRouter);
-router.use('/cab', cabRouter);
+router.use('/login', authRouter);
+router.use('/user', [auth], userRouter);
+router.use('/booking', [auth], bookingRouter);
+router.use('/cab', [auth], cabRouter);
 
 module.exports = router;
