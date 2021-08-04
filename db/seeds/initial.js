@@ -1,11 +1,11 @@
 const tableNames = require('../../src/constants/tableNames');
 
-exports.seed = async (knex) => {
-  const seedValue = async (tableName, data) => {
-    await knex(tableName).del();
-    await knex(tableName).insert(data);
-  };
+const seedValue = async (knex, tableName, data) => {
+  await knex(tableName).del();
+  await knex(tableName).insert(data);
+};
 
+exports.seed = async (knex) => {
   const userData = [
     {
       email: 'user1@gmail.com',
@@ -27,7 +27,7 @@ exports.seed = async (knex) => {
   const cabData = [
     {
       driver_name: 'driver1',
-      vehicle_number: '389338',
+      vehicle_number: '389339',
       vehicle_colour: 'black',
     },
     {
@@ -37,7 +37,7 @@ exports.seed = async (knex) => {
     },
     {
       driver_name: 'driver3',
-      vehicle_number: '389338',
+      vehicle_number: '389337',
       vehicle_colour: 'black',
     },
   ];
@@ -69,7 +69,13 @@ exports.seed = async (knex) => {
     },
   ];
 
-  seedValue(tableNames.USER, userData);
-  seedValue(tableNames.CAB, cabData);
-  seedValue(tableNames.BOOKING, bookingData);
+  // await knex(tableNames.USER).del();
+  // await knex(tableNames.USER).insert(userData);
+  // await knex(tableNames.CAB).del();
+  // await knex(tableNames.CAB).insert(cabData);
+  // await knex(tableNames.BOOKING).del();
+  // await knex(tableNames.BOOKING).insert(bookingData);
+  await seedValue(knex, tableNames.USER, userData);
+  await seedValue(knex, tableNames.CAB, cabData);
+  await seedValue(knex, tableNames.BOOKING, bookingData);
 };

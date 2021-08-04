@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { bookingRouter, userRouter, cabRouter } = require('./controllers/index');
+const { bookingRouter, userRouter, cabRouter } = require('./controllers');
 
 router.get('/ping', (req, res) => {
   res.json({
