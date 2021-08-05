@@ -30,6 +30,21 @@ cabRouter.get('/count', async (req, res, next) => {
   }
 });
 
+cabRouter.get('/cablocation', async (req, res, next) => {
+  try {
+    const whereObj = req.query.where ? JSON.parse(req.query.where) : {};
+    const paginateObj = req.query.paginate ? JSON.parse(req.query.paginate) : {};
+    const result = await CabRepository.find(
+      controllerTable,
+      whereObj,
+      paginateObj,
+    );
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
 cabRouter.get('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;

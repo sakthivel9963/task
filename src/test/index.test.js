@@ -63,6 +63,11 @@ describe('cab', () => {
       .get('/api/v1/cab').set('auth-token', auth_token);
     expect(response.status).to.equal(200);
   });
+  it('get near by cab location', async () => {
+    const response = await request(app)
+      .get('/api/v1/cab/cablocation').query({ cab_location: 'delhi' }).set('auth-token', auth_token);
+    expect(response.status).to.equal(200);
+  });
   it('get particular cab', async () => {
     const response = await request(app)
       .get('/api/v1/cab/1').set('auth-token', auth_token);
@@ -98,6 +103,11 @@ describe('booking', () => {
   it('get all booking', async () => {
     const response = await request(app)
       .get('/api/v1/booking').set('auth-token', auth_token);
+    expect(response.status).to.equal(200);
+  });
+  it('get all user previous rides', async () => {
+    const response = await request(app)
+      .get('/api/v1/booking/userpreviousride').query({ user_id: 1 }).set('auth-token', auth_token);
     expect(response.status).to.equal(200);
   });
   it('get particular booking', async () => {

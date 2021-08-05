@@ -30,6 +30,21 @@ bookingRouter.get('/count', async (req, res, next) => {
   }
 });
 
+bookingRouter.get('/userpreviousride', async (req, res, next) => {
+  try {
+    const whereObj = req.query.where ? JSON.parse(req.query.where) : {};
+    const paginateObj = req.query.paginate ? JSON.parse(req.query.paginate) : {};
+    const result = await BookingRepository.find(
+      controllerTable,
+      whereObj,
+      paginateObj,
+    );
+    res.json(result);
+  } catch (error) {
+    next(error);
+  }
+});
+
 bookingRouter.get('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;

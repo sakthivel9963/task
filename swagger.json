@@ -313,6 +313,42 @@
           }
         }
       }
+    },
+    "/cab/cablocation": {
+      "get": {
+        "tags": ["Cab"],
+        "summary": "Get all near by cab location",
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "schema": { "$ref": "#/definitions/NearCab" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/booking/userpreviousride": {
+      "get": {
+        "tags": ["Booking"],
+        "summary": "Get all user previous rides",
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "schema": { "$ref": "#/definitions/PreviousBooking" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
   "definitions": {
