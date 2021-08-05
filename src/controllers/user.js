@@ -71,12 +71,12 @@ userRouter.put('/:id', async (req, res, next) => {
     const updateObj = req.body;
     const { id } = req.params;
     const whereObj = { id };
-    const result = await UserRepository.update(
+    await UserRepository.update(
       controllerTable,
       updateObj,
       whereObj,
     );
-    res.json(result);
+    res.status(201).json();
   } catch (error) {
     next(error);
   }
@@ -86,11 +86,11 @@ userRouter.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
     const deleteObj = { id };
-    const result = await UserRepository.delete(
+    await UserRepository.delete(
       controllerTable,
       deleteObj,
     );
-    res.json(result);
+    res.status(201).json();
   } catch (error) {
     next(error);
   }

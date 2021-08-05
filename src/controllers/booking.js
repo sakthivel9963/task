@@ -62,12 +62,12 @@ bookingRouter.put('/:id', async (req, res, next) => {
     const updateObj = req.body;
     const { id } = req.params;
     const whereObj = { id };
-    const result = await BookingRepository.update(
+    await BookingRepository.update(
       controllerTable,
       updateObj,
       whereObj,
     );
-    res.json(result);
+    res.status(201).json();
   } catch (error) {
     next(error);
   }
@@ -77,11 +77,11 @@ bookingRouter.delete('/:id', async (req, res, next) => {
   try {
     const { id } = req.params;
     const deleteObj = { id };
-    const result = await BookingRepository.delete(
+    await BookingRepository.delete(
       controllerTable,
       deleteObj,
     );
-    res.json(result);
+    res.status(201).json();
   } catch (error) {
     next(error);
   }
