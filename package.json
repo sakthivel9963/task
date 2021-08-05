@@ -10,7 +10,9 @@
     "lint:fix": "eslint ./src/** --fix",
     "migrate": "knex migrate:latest",
     "rollback": "knex migrate:rollback",
-    "seed": "knex seed:run"
+    "seed": "knex seed:run",
+    "test": "mocha src/test/*.js --exit",
+    "test:watch": "mocha src/test/*.js --watch --exit"
   },
   "keywords": [],
   "author": "sakthivel <sakthivel9963@gmail.com>",
@@ -30,12 +32,15 @@
     "winston": "^3.3.3"
   },
   "devDependencies": {
+    "chai": "^4.3.4",
     "eslint": "^7.5.0",
     "eslint-config-airbnb-base": "^14.2.0",
     "eslint-config-prettier": "^6.11.0",
     "eslint-plugin-import": "^2.22.0",
     "eslint-plugin-prettier": "^3.1.4",
+    "mocha": "^9.0.3",
     "nodemon": "^2.0.4",
-    "prettier": "^2.0.5"
+    "prettier": "^2.0.5",
+    "supertest": "^6.1.4"
   }
 }
