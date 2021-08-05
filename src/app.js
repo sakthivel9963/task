@@ -5,13 +5,16 @@ const helmet = require('helmet');
 const morgan = require('morgan');
 const path = require('path');
 const rateLimit = require('express-rate-limit');
+const swaggerUi = require('swagger-ui-express');
 const router = require('./router');
 const { notFound, errorHandler } = require('./middleware/defaults');
 const winston = require('./middleware/winston');
+const swaggerDocument = require('../swagger.json');
 
 const app = express();
 
 app.use('/', express.static(path.join(__dirname, '../public')));
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));

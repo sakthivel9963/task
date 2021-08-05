@@ -1,0 +1,414 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "version": "1.0.0",
+    "title": "express-basic",
+    "license": {
+      "name": "MIT",
+      "url": "https://opensource.org/licenses/MIT"
+    }
+  },
+  "host": "localhost:4000/api/v1",
+  "basePath": "/",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "API for users in the system"
+    }
+  ],
+  "securityDefinitions": {
+    "JWT": {
+      "description": "",
+      "type": "apiKey",
+      "name": "auth-token",
+      "in": "header"
+    }
+  },
+  "security": [{ "JWT": [] }],
+  "schemes": ["http"],
+  "paths": {
+    "/login": {
+      "post": {
+        "tags": ["Auth"],
+        "summary": "Auth the user with email and password",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "login",
+            "schema": { "$ref": "#/definitions/auth" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user": {
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get all users",
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "schema": { "$ref": "#/definitions/User" }
+          },
+          {
+            "name": "paginate",
+            "in": "query",
+            "schema": { "$ref": "#/definitions/Paginate" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Users"],
+        "summary": "Save user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "login",
+            "schema": { "$ref": "#/definitions/User" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/user/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "tags": ["Users"],
+        "summary": "Get particular user",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Users"],
+        "summary": "Update user",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "login",
+            "schema": { "$ref": "#/definitions/User" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Users"],
+        "summary": "Delete user",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cab": {
+      "get": {
+        "tags": ["Cab"],
+        "summary": "Get all Cab",
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "schema": { "$ref": "#/definitions/Cab" }
+          },
+          {
+            "name": "paginate",
+            "in": "query",
+            "schema": { "$ref": "#/definitions/Paginate" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Cab"],
+        "summary": "Save Cab",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "login",
+            "schema": { "$ref": "#/definitions/Cab" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/cab/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "tags": ["Cab"],
+        "summary": "Get particular Cab",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Cab"],
+        "summary": "Update Cab",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "login",
+            "schema": { "$ref": "#/definitions/Cab" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Cab"],
+        "summary": "Delete Cab",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/booking": {
+      "get": {
+        "tags": ["Booking"],
+        "summary": "Get all Booking",
+        "parameters": [
+          {
+            "name": "where",
+            "in": "query",
+            "schema": { "$ref": "#/definitions/Booking" }
+          },
+          {
+            "name": "paginate",
+            "in": "query",
+            "schema": { "$ref": "#/definitions/Paginate" }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "post": {
+        "tags": ["Booking"],
+        "summary": "Save Booking",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "login",
+            "schema": { "$ref": "#/definitions/Booking" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/booking/{id}": {
+      "parameters": [
+        {
+          "name": "id",
+          "in": "path",
+          "required": true,
+          "type": "integer"
+        }
+      ],
+      "get": {
+        "tags": ["Booking"],
+        "summary": "Get particular Booking",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "put": {
+        "tags": ["Booking"],
+        "summary": "Update Booking",
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "login",
+            "schema": { "$ref": "#/definitions/Booking" }
+          }
+        ],
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      },
+      "delete": {
+        "tags": ["Booking"],
+        "summary": "Delete Booking",
+        "produces": ["application/json"],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "auth": {
+      "type": "object",
+      "required": ["email", "password"],
+      "properties": {
+        "email": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "User": {
+      "required": ["email", "name", "password"],
+      "properties": {
+        "email": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "name": {
+          "type": "string"
+        },
+        "password": {
+          "type": "string"
+        }
+      }
+    },
+    "Cab": {
+      "required": [
+        "driver_name",
+        "vehicle_number",
+        "vehicle_colour",
+        "cab_location"
+      ],
+      "properties": {
+        "vehicle_number": {
+          "type": "string",
+          "uniqueItems": true
+        },
+        "driver_name": {
+          "type": "string"
+        },
+        "vehicle_colour": {
+          "type": "string"
+        },
+        "cab_location": {
+          "type": "string"
+        }
+      }
+    },
+    "Booking": {
+      "required": ["user_id", "cab_id", "pickup_location", "drop_location"],
+      "properties": {
+        "user_id": {
+          "type": "integer"
+        },
+        "cab_id": {
+          "type": "integer"
+        },
+        "pickup_location": {
+          "type": "string"
+        },
+        "drop_location": {
+          "type": "string"
+        }
+      }
+    },
+    "Paginate": {
+      "required": ["perPage", "currentPage"],
+      "properties": {
+        "perPage": {
+          "type": "integer"
+        },
+        "currentPage": {
+          "type": "integer"
+        }
+      }
+    },
+    "NearCab": {
+      "required": ["cab_location"],
+      "properties": {
+        "cab_location": {
+          "type": "string"
+        }
+      }
+    },
+    "PreviousBooking": {
+      "required": ["user_id"],
+      "properties": {
+        "user_id": {
+          "type": "number"
+        }
+      }
+    }
+  }
+}
